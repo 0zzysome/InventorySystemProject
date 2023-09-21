@@ -18,7 +18,9 @@ public class PlayerMovement : MonoBehaviour
     public float playerHeight;
     public LayerMask whatIsGround;
     bool isGrounded;
+
     
+
     public Transform orientation;
     float horizontalInput;
     float verticalInput;
@@ -32,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();   
         rb.freezeRotation = true;
+        
         ResetJump();
     }
     // Update is called once per frame
@@ -41,7 +44,9 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
         
         ReadInput();
+        SpeedControll();
         ChangeDrag();
+
     }
     private void FixedUpdate()
     {
@@ -58,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
             readyToJump = false;
 
             Jump();
-
+            //letts you keep jumping
             Invoke(nameof(ResetJump), jumpCooldown);
         }
     }
@@ -86,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.drag = groundDrag;
         }
-        else
+        else if (!isGrounded)
         {
             rb.drag = airDrag;
         }
