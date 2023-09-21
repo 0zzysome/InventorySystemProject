@@ -6,7 +6,7 @@ public class PlayerInteract : MonoBehaviour
 {
     Camera cam;
     
-    public Interactable interactableComponent;
+    
     
     // Start is called before the first frame update
     void Start()
@@ -22,11 +22,12 @@ public class PlayerInteract : MonoBehaviour
             if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 100f)) 
             { 
                 //saves the component 
-                interactableComponent = hit.collider.GetComponent<Interactable>();
+                Interactable interactableComponent = hit.collider.GetComponent<Interactable>();
                 //checks if it acctually saved a component correctly. 
                 if (interactableComponent != null ) 
                 {
                     interactableComponent.Interact();
+                    
                 }
                 
             }
