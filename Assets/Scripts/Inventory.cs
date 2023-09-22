@@ -61,6 +61,7 @@ public class Inventory : MonoBehaviour
             onItemChangedCallBack.Invoke();
         }
     }
+    //made to avoid lits being public problem.
     public List<Item> getItems() 
     {
         return items;
