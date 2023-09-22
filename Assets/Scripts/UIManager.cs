@@ -6,21 +6,28 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] GameObject inGameHUD;
     [SerializeField] GameObject InventoryHUD;
-    
 
+    private bool isInInventory;
 
     // Start is called before the first frame update
     void Start()
     {
-        HideAllHUDs();
-        inGameHUD.SetActive(true);
+        ShowInGameHUD();
     }
 
     private void Update()
     {
-        if (Input.GetButtonDown("OpenInventory"))
+        if (Input.GetButtonDown("OpenInventory")&& isInInventory == false)
         {
             ShowInventory();
+            isInInventory = true;
+            return;
+        }
+        if (Input.GetButtonDown("OpenInventory") && isInInventory == true)
+        {
+            ShowInGameHUD();
+            isInInventory = false;
+            return;
         }
     }
 
@@ -36,5 +43,12 @@ public class UIManager : MonoBehaviour
         Cursor.visible = true;
 
         InventoryHUD.SetActive(true);
+    }
+    public void ShowInGameHUD()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        HideAllHUDs();
+        inGameHUD.SetActive(true );
     }
 }
