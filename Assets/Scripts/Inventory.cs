@@ -11,19 +11,29 @@ public class Inventory : MonoBehaviour
     private void Awake()
     {
         
+        
+            
+        
         //should only be one inventory becuase of static, so if there are more then this error will show
         if (Instance != null) 
         {
             Debug.LogWarning("More than one inventory!!");
             return;
         }
-        Instance = this;
         
+        Instance = this;
     }
     #endregion
 
+    //deligate???
+    public delegate void OnItemChanged();
+    public OnItemChanged onItemChangedCallBack;
+
     public int inventorySpace = 20;
-    public List<Item> items = new List<Item>(); 
+
+    //use funtion to refrence cuase public is messy
+    private List<Item> items = new List<Item>(); 
+    
     public bool add(Item item)
     {
         if(!item.isDefaultItem)
@@ -35,11 +45,25 @@ public class Inventory : MonoBehaviour
                 return false;
             }
             items.Add(item);
+            //makes shure funtion is not emty 
+            if(onItemChangedCallBack != null) 
+            {
+                onItemChangedCallBack.Invoke();
+            }
         }
         return true;
     }
     public void remove(Item item)
     {
         items.Remove(item);
+        if (onItemChangedCallBack != null)
+        {
+            onItemChangedCallBack.Invoke();
+        }
+    }
+    public List<Item> getItems() 
+    {
+        return items;
+        
     }
 }
