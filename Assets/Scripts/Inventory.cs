@@ -36,7 +36,9 @@ public class Inventory : MonoBehaviour
     
     public bool add(Item item)
     {
-        if(!item.isDefaultItem)
+
+        Item itemCopy = Instantiate(item);// creates a copy so code never changes actual scriptableobject
+        if(!itemCopy.isDefaultItem)
         {
             if(items.Count >= inventorySpace) 
             {
@@ -44,27 +46,65 @@ public class Inventory : MonoBehaviour
                 //returns to avoid adding more than space alows
                 return false;
             }
-            items.Add(item);
-            //makes shure funtion is not emty 
-            if(onItemChangedCallBack != null) 
-            {
-                onItemChangedCallBack.Invoke();
+            //checks all items in list 
+            for(int i = 0; i < items.Count; i++){
+                //ses if the item is already in list and if it can stack
+                if (items[i].name == itemCopy.name && itemCopy.stackable) 
+                {
+                    Debug.Log("was same as in inventory");
+                    //the amount is less than the max stack 
+                    if (items[i].amount < items[i].maxStack)
+                    {
+                        //uppdates amount
+                        items[i].amount++;
+                        Debug.Log("amount was increased on " + items[i].name);
+                        ItemWasChanged();
+                        return true;
+                    }
+                    else 
+                    {
+                        //otherwise make a new item in the list
+                        items.Add(itemCopy);
+                        ItemWasChanged();
+                        return true;
+                    }  
+                }
             }
+            Debug.Log("not found in inventory");
+            items.Add(itemCopy);
+            
+            ItemWasChanged();
         }
         return true;
     }
     public void remove(Item item)
     {
-        items.Remove(item);
-        if (onItemChangedCallBack != null)
+        item.amount--;
+        if(item.amount <= 0)
         {
-            onItemChangedCallBack.Invoke();
+            items.Remove(item);
+
+            ItemWasChanged();
         }
+        else
+        {
+            ItemWasChanged();
+        }
+        
     }
-    //made to avoid lits being public problem.
+    //made to avoid lists being public problem.
     public List<Item> getItems() 
     {
         return items;
         
+    }
+    //makes shure funtion is not emty and call out to all funtions lisening to this call
+    //uppdates UI
+    public void ItemWasChanged() 
+    {
+        if (onItemChangedCallBack != null)
+        {
+            onItemChangedCallBack.Invoke();
+        }
     }
 }

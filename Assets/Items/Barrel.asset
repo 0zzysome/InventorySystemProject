@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cf2e54013c5e7c49ae845128c364310, type: 3}
-  m_Name: Bottle
+  m_Script: {fileID: 11500000, guid: 678e653206f58d24896271adfdb904a7, type: 3}
+  m_Name: Barrel
   m_EditorClassIdentifier: 
-  name: Bottle
-  icon: {fileID: 0}
+  name: Barrel
+  icon: {fileID: 21300000, guid: 3c696857158703648b37fb1e1fa6eb8c, type: 3}
   isDefaultItem: 0
+  amount: 1
+  stackable: 1
+  maxStack: 3

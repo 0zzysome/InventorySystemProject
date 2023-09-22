@@ -17,12 +17,14 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+        // toggles inventory on
         if (Input.GetButtonDown("OpenInventory")&& isInInventory == false)
         {
             ShowInventory();
             isInInventory = true;
             return;
         }
+        // toggles inventory off
         if (Input.GetButtonDown("OpenInventory") && isInInventory == true)
         {
             ShowInGameHUD();
@@ -30,7 +32,6 @@ public class UIManager : MonoBehaviour
             return;
         }
     }
-
     public void HideAllHUDs() 
     {
         inGameHUD.SetActive(false);

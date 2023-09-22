@@ -23,20 +23,25 @@ public class PlayerCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //mouse input
-        float mouseX = Input.GetAxisRaw("Mouse X")  * sensX;
-        float mouseY = Input.GetAxisRaw("Mouse Y")  * sensY;
+        //checks if the currsor is visiable
+        if(Cursor.visible== false) 
+        {
+            //mouse input
+            float mouseX = Input.GetAxisRaw("Mouse X")  * sensX;
+            float mouseY = Input.GetAxisRaw("Mouse Y")  * sensY;
 
-        yRotation += mouseX;
+            yRotation += mouseX;
 
-        xRotation -= mouseY;
+            xRotation -= mouseY;
 
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        //rotate camera
-        transform.rotation = Quaternion.Euler(xRotation, yRotation,0);
+            //rotate camera
+            transform.rotation = Quaternion.Euler(xRotation, yRotation,0);
         
-        // makes shure the orientation is the correct rotation in Y 
-        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+            // makes shure the orientation is the correct rotation in Y 
+            orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+        }
+        
     }
 }

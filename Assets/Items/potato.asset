@@ -15,4 +15,7 @@ MonoBehaviour:
   name: New Item
   icon: {fileID: 0}
   isDefaultItem: 0
+  amount: 1
+  stackable: 0
+  maxStack: 1
   healthRestoration: 0
