@@ -24,7 +24,7 @@ public class PlayerCamera : MonoBehaviour
     void Update()
     {
         //checks if the currsor is visiable
-        if(Cursor.visible== false) 
+        if(Cursor.visible == false) 
         {
             //mouse input
             float mouseX = Input.GetAxisRaw("Mouse X")  * sensX;

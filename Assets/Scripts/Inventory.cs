@@ -25,9 +25,14 @@ public class Inventory : MonoBehaviour
     }
     #endregion
 
-    //deligate???
+    //deligate
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallBack;
+    //needed becuase othewise the onItemChangedCallBack funtion would be null and not add the first item.
+    private void Start()
+    {
+        ItemWasChanged();
+    }
 
     public int inventorySpace = 20;
 
@@ -57,6 +62,8 @@ public class Inventory : MonoBehaviour
                     {
                         //uppdates amount
                         items[i].amount++;
+                        //adds refrence of it to the list stack so can be used later
+                        items[i].AddObjectToStack(itemCopy.objectRef);
                         Debug.Log("amount was increased on " + items[i].name);
                         ItemWasChanged();
                         return true;
@@ -83,11 +90,13 @@ public class Inventory : MonoBehaviour
         if(item.amount <= 0)
         {
             items.Remove(item);
-
+            item.objectRef.SetActive(true);
             ItemWasChanged();
         }
         else
         {
+
+            
             ItemWasChanged();
         }
         
@@ -105,6 +114,10 @@ public class Inventory : MonoBehaviour
         if (onItemChangedCallBack != null)
         {
             onItemChangedCallBack.Invoke();
+        }
+        else 
+        {
+            Debug.Log("FUNCTION FOR UPDATEUI WAS NULL!!!!!");
         }
     }
 }

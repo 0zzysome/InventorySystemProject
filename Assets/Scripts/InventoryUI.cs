@@ -37,7 +37,7 @@ public class InventoryUI : MonoBehaviour
                 
 
                 slots[i].AddItem(inventory.getItems()[i]);
-
+                Debug.Log("ITEM ADDED TO INVENTORY");
             }
             //otherwise make the UI slot emty
             else 

@@ -1,4 +1,5 @@
-
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 //derives from interactable 
 public class ItemPickup : Interactable
@@ -12,11 +13,14 @@ public class ItemPickup : Interactable
     void PickUp()
     {
         Debug.Log("Picking up "+ item.name );
+        item.SaveObject(gameObject);
         bool wasPickedUp = Inventory.Instance.add( item );
         if (wasPickedUp) 
         { 
 
-            Destroy(gameObject);
+            gameObject.SetActive( false );
         }
+
+
     }
 }

@@ -12,4 +12,23 @@ public class Item : ScriptableObject
     public int amount = 1;
     public bool stackable = false;
     public int maxStack = 20;
+    public GameObject objectRef;
+    public List<GameObject> itemStack;
+
+    public void SaveObject(GameObject obj ) 
+    {
+        objectRef = obj;
+    }
+    public void ClearObject()
+    {
+        objectRef = null;
+    }
+    public void AddObjectToStack(GameObject obj) 
+    {
+        for(int i = 0; i < itemStack.Count; i++) 
+        { 
+        
+        }
+        
+    }
 }

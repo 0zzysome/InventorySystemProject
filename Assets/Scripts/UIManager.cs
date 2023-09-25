@@ -12,13 +12,16 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ShowInGameHUD();
+        //used becuase othewise the inventory could not load and have its values saved
+        //leading to fist item not being saved
+        Invoke("ShowInGameHUD", 0.1f);
+        
     }
 
     private void Update()
     {
         // toggles inventory on
-        if (Input.GetButtonDown("OpenInventory")&& isInInventory == false)
+        if (Input.GetButtonDown("OpenInventory") && isInInventory == false)
         {
             ShowInventory();
             isInInventory = true;
