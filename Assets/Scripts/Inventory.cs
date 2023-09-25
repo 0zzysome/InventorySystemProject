@@ -38,7 +38,7 @@ public class Inventory : MonoBehaviour
 
     //use funtion to refrence cuase public is messy
     private List<Item> items = new List<Item>(); 
-    
+    //handles everyting to doi with picking up and item (oh dear god)
     public bool add(Item item)
     {
 
@@ -95,8 +95,8 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-
-            
+            //"drops" otem in the itemstack 
+            item.itemStack[item.amount-1].SetActive(true); 
             ItemWasChanged();
         }
         

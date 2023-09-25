@@ -25,10 +25,8 @@ public class Item : ScriptableObject
     }
     public void AddObjectToStack(GameObject obj) 
     {
-        for(int i = 0; i < itemStack.Count; i++) 
-        { 
         
-        }
+        itemStack.Add( obj );
         
     }
 }
