@@ -35,6 +35,7 @@ public class Inventory : MonoBehaviour
     }
 
     public int inventorySpace = 20;
+    public Transform dropPosition;
 
     //use funtion to refrence cuase public is messy
     private List<Item> items = new List<Item>(); 
@@ -84,23 +85,43 @@ public class Inventory : MonoBehaviour
         }
         return true;
     }
-    public void remove(Item item)
+    //drops the item in front of the player
+    public void Drop(Item item)
     {
         item.amount--;
         if(item.amount <= 0)
         {
             items.Remove(item);
+            item.objectRef.transform.position = dropPosition.position;
             item.objectRef.SetActive(true);
+            
             ItemWasChanged();
         }
         else
         {
-            //"drops" otem in the itemstack 
+            //"drops" item in the itemstack 
+            item.itemStack[item.amount - 1].transform.position = dropPosition.position;
             item.itemStack[item.amount-1].SetActive(true); 
             ItemWasChanged();
         }
         
     }
+    // removes the item from inventory
+    //used for equipment as you dont drop the equipment
+    public void Remove(Item item)
+    {
+        
+        items.Remove(item);
+            
+            
+
+        ItemWasChanged();
+        
+        
+
+    }
+
+
     //made to avoid lists being public problem.
     public List<Item> getItems() 
     {

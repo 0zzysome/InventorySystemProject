@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db4ee6c29ec457140b0da4b958635565, type: 3}
   m_Name: potato
   m_EditorClassIdentifier: 
-  name: New Item
+  name: Potato
   icon: {fileID: 0}
+  equipSlot: 0
   isDefaultItem: 0
   amount: 1
   stackable: 0
   maxStack: 1
+  objectRef: {fileID: 0}
+  itemStack: []
   healthRestoration: 0

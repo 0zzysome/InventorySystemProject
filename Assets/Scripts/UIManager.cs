@@ -24,6 +24,7 @@ public class UIManager : MonoBehaviour
         if (Input.GetButtonDown("OpenInventory") && isInInventory == false)
         {
             ShowInventory();
+            Time.timeScale = 0f;
             isInInventory = true;
             return;
         }
@@ -31,6 +32,7 @@ public class UIManager : MonoBehaviour
         if (Input.GetButtonDown("OpenInventory") && isInInventory == true)
         {
             ShowInGameHUD();
+            Time.timeScale = 1f;
             isInInventory = false;
             return;
         }

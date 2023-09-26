@@ -8,6 +8,7 @@ public class Item : ScriptableObject
     //replaces unitys default name 
     new public string name = "New Item";
     public Sprite icon = null;
+    public EquipSlot equipSlot;
     public bool isDefaultItem = false;
     public int amount = 1;
     public bool stackable = false;
@@ -15,6 +16,11 @@ public class Item : ScriptableObject
     public GameObject objectRef;
     public List<GameObject> itemStack;
 
+    public virtual void Use() 
+    {
+        Debug.Log("Using " + name);
+        
+    }
     public void SaveObject(GameObject obj ) 
     {
         objectRef = obj;
@@ -29,4 +35,9 @@ public class Item : ScriptableObject
         itemStack.Add( obj );
         
     }
+    public void RemoveFromInventory() 
+    {
+        Inventory.Instance.Remove(this);
+    }
 }
+public enum EquipSlot { Weapon, Chest, Head }

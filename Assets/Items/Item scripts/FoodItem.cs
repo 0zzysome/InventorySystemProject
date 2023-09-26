@@ -5,4 +5,11 @@ using UnityEngine;
 public class FoodItem : Item
 {
     public int healthRestoration;
+    public override void Use()
+    {
+        base.Use();
+        RemoveFromInventory();
+        EquipmentManager.Instance.Equip(this);
+        
+    }
 }

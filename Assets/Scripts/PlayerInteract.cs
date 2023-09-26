@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour
 {
     Camera cam;
-    
+    public float reach;
     
     
     // Start is called before the first frame update
@@ -21,7 +21,7 @@ public class PlayerInteract : MonoBehaviour
             if (Cursor.visible == false)
             {
                 RaycastHit hit;
-                if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 100f)) 
+                if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, reach)) 
                 { 
                     //saves the component 
                     Interactable interactableComponent = hit.collider.GetComponent<Interactable>();
