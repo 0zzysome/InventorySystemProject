@@ -28,11 +28,7 @@ public class Inventory : MonoBehaviour
     //deligate
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallBack;
-    //needed becuase othewise the onItemChangedCallBack funtion would be null and not add the first item.
-    private void Start()
-    {
-        ItemWasChanged();
-    }
+
 
     public int inventorySpace = 20;
     public Transform dropPosition;
