@@ -27,7 +27,10 @@ public class PlayerMovement : MonoBehaviour
     float verticalInput;
 
 
-
+    [Header("Throwing")]
+    public Transform cameraDirection;
+    public float throwCooldown;
+    float nextUppdate = 0f;
     Vector3 direction;
     Rigidbody rb;
 
@@ -47,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
         ReadInput();
         SpeedControll();
         ChangeDrag();
-
+        ThrowEquiped();
     }
     private void FixedUpdate()
     {
@@ -122,14 +125,24 @@ public class PlayerMovement : MonoBehaviour
     }
     public void ThrowEquiped()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (EquipmentManager.Instance.currentEquipment[0] != null)
         {
-            // makes shure hand is not emty
-            if (EquipmentManager.Instance.currentEquipment[0] != null)
+            if (Input.GetMouseButtonDown(0))
             {
-                 EquipmentManager.Instance.ThrowItem(EquipmentManager.Instance.currentEquipment[0]);
+                // makes shure hand is not emty
+
+
+                if (Cursor.visible == false)
+                {
+                    if (Time.time > nextUppdate)
+                    {
+                        EquipmentManager.Instance.ThrowItem(EquipmentManager.Instance.currentEquipment[0], cameraDirection);
+                        Debug.Log("throwing  " + EquipmentManager.Instance.currentEquipment[0].name);
+                        nextUppdate = Time.time + throwCooldown;
+                    }
+
+                }
             }
-            
         }
     }
 }

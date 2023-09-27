@@ -4169,6 +4169,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   orientation: {fileID: 75643862}
+  cameraDirection: {fileID: 963194228}
+  throwCooldown: 1
 --- !u!114 &2081190834
 MonoBehaviour:
   m_ObjectHideFlags: 0

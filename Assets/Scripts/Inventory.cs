@@ -66,7 +66,7 @@ public class Inventory : MonoBehaviour
                         ItemWasChanged();
                         return true;
                     }
-                    /*else 
+                     
                     {
                         //otherwise make a new item in the list
                         items.Add(itemCopy);
@@ -74,7 +74,7 @@ public class Inventory : MonoBehaviour
                         ItemWasChanged();
                         return true;
                     }  
-                    */
+                    
                 }
                 
             }

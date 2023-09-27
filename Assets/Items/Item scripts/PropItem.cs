@@ -20,6 +20,6 @@ public class PropItem : Item
     }
     public void ThrowItem()
     {
-        EquipmentManager.Instance.ThrowItem(this);
+        //EquipmentManager.Instance.ThrowItem(this);
     }
 }

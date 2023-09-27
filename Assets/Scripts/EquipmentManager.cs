@@ -84,7 +84,7 @@ public class EquipmentManager : MonoBehaviour
 
 
     }
-    public void ThrowItem(Item item)
+    public void ThrowItem(Item item, Transform transform)
     {
         if (item == null) 
         {
@@ -111,6 +111,11 @@ public class EquipmentManager : MonoBehaviour
             item.objectRef.transform.position = inventory.dropPosition.position;
             //item becomes vissable (prob not needed but whatever)
             item.objectRef.SetActive(true);
+
+            if(item.objectRef.GetComponent<Rigidbody>()  != null) 
+            {
+                item.objectRef.GetComponent<Rigidbody>().velocity = transform.forward * 100f ;
+            }
             
             
             inventory.ItemWasChanged();
@@ -129,7 +134,10 @@ public class EquipmentManager : MonoBehaviour
             item.itemStack[item.amount - 1].transform.position = inventory.dropPosition.position;
             // makes item visable
             item.itemStack[item.amount - 1].SetActive(true);
-
+            if (item.itemStack[item.amount - 1].GetComponent<Rigidbody>() != null)
+            {
+                item.itemStack[item.amount - 1].GetComponent<Rigidbody>().velocity = handPosition.GetComponentInParent<Transform>().forward * 100f;
+            }
 
             inventory.ItemWasChanged();
         }
