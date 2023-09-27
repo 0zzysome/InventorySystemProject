@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Barrel
   icon: {fileID: 21300000, guid: 3c696857158703648b37fb1e1fa6eb8c, type: 3}
+  equipSlot: 0
   isDefaultItem: 0
   amount: 1
   stackable: 1
   maxStack: 3
+  objectRef: {fileID: 0}
+  itemStack: []

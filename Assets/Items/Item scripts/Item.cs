@@ -13,7 +13,7 @@ public class Item : ScriptableObject
     public EquipSlot equipSlot;
     public bool isDefaultItem = false;
     public int amount = 1;
-    public bool stackable = false;
+    public bool stackable;
     public int maxStack = 20;
     public GameObject objectRef;
     public List<GameObject> itemStack;
@@ -27,6 +27,7 @@ public class Item : ScriptableObject
     public virtual void Use() 
     {
         Debug.Log("Interacted with " + name + " while in hand");
+
     }
     public void SaveObject(GameObject obj ) 
     {

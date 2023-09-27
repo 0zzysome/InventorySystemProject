@@ -17,8 +17,8 @@ MonoBehaviour:
   equipSlot: 0
   isDefaultItem: 0
   amount: 1
-  stackable: 0
-  maxStack: 1
+  stackable: 1
+  maxStack: 3
   objectRef: {fileID: 0}
   itemStack: []
   healthRestoration: 0

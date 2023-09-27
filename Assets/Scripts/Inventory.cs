@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class Inventory : MonoBehaviour
 {
@@ -34,7 +35,7 @@ public class Inventory : MonoBehaviour
     public Transform dropPosition;
 
     //use funtion to refrence cuase public is messy
-    private List<Item> items = new List<Item>(); 
+    public List<Item> items = new List<Item>(); 
     //handles everyting to doi with picking up and item (oh dear god)
     public bool add(Item item)
     {
@@ -65,14 +66,17 @@ public class Inventory : MonoBehaviour
                         ItemWasChanged();
                         return true;
                     }
-                    else 
+                    /*else 
                     {
                         //otherwise make a new item in the list
                         items.Add(itemCopy);
+                        Debug.Log("amount was increased on " + items[i].name);
                         ItemWasChanged();
                         return true;
                     }  
+                    */
                 }
+                
             }
             Debug.Log("not found in inventory");
             items.Add(itemCopy);
@@ -98,10 +102,13 @@ public class Inventory : MonoBehaviour
             //"drops" item in the itemstack 
             item.itemStack[item.amount - 1].transform.position = dropPosition.position;
             item.itemStack[item.amount-1].SetActive(true); 
+            item.itemStack.RemoveAt(item.amount - 1);
             ItemWasChanged();
         }
         
     }
+
+    
     // removes the item from inventory
     //used for equipment as you dont drop the equipment
     public void Remove(Item item)

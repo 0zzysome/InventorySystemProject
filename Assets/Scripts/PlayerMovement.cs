@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -118,5 +119,17 @@ public class PlayerMovement : MonoBehaviour
     private void ResetJump()
     {
         readyToJump = true;
+    }
+    public void ThrowEquiped()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            // makes shure hand is not emty
+            if (EquipmentManager.Instance.currentEquipment[0] != null)
+            {
+                 EquipmentManager.Instance.ThrowItem(EquipmentManager.Instance.currentEquipment[0]);
+            }
+            
+        }
     }
 }
