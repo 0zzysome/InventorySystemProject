@@ -23,10 +23,16 @@ public class EquipmentManager : MonoBehaviour
     {
         if (IsHoldingItem) 
         {
-            currentEquipment[0].objectRef.transform.position = handPosition.position;
-            currentEquipment[0].objectRef.transform.rotation = handPosition.rotation;
+            if (currentEquipment[0] != null) 
+            {
+                currentEquipment[0].objectRef.transform.position = handPosition.position;
+
+                currentEquipment[0].objectRef.transform.rotation = handPosition.rotation;
+            }
+            
         }
     }
+    
 
 
     Inventory inventory;
@@ -75,10 +81,12 @@ public class EquipmentManager : MonoBehaviour
         //makes it a trigger so it doesent interact with the player
         currentEquipment[0].ToggleIsTrigger(true);
         //saves scale for after parent 
+        
         Vector3 scaleRef = currentEquipment[0].objectRef.transform.localScale;
         currentEquipment[0].objectRef.transform.position = handPosition.position;
         currentEquipment[0].objectRef.transform.parent = handPosition;
         currentEquipment[0].objectRef.transform.localScale = scaleRef;
+       
         // now updates the position of the item again
         IsHoldingItem = true;
 

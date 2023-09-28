@@ -598,13 +598,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 218594535}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2537354, y: -0.3083657, z: 0.04338813, w: 0.9157764}
+  m_LocalRotation: {x: 0.17229, y: 0.325317, z: 0.19125988, w: 0.9098927}
   m_LocalPosition: {x: 0.589, y: -0.117, z: 0.802}
   m_LocalScale: {x: 0.48, y: 0.48, z: 0.48}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 963194228}
-  m_LocalEulerAnglesHint: {x: 29.438, y: -38.553, z: -5.074}
+  m_LocalEulerAnglesHint: {x: 10.9, y: 42.067, z: 27.944}
 --- !u!1001 &221718656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1894,7 +1894,7 @@ Transform:
   m_GameObject: {fileID: 972204064}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.36}
+  m_LocalPosition: {x: 0, y: 0, z: 1.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3564,10 +3564,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8168338600240875469, guid: c0ce365569efa3b438da715511f8bde0, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8240971957277156713, guid: c0ce365569efa3b438da715511f8bde0, type: 3}
       propertyPath: m_Name
       value: Barrel (1)
@@ -4730,7 +4726,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   orientation: {fileID: 75643862}
-  throwCooldown: 1
+  throwCooldown: 0.5
 --- !u!114 &2081190834
 MonoBehaviour:
   m_ObjectHideFlags: 0

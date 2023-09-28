@@ -86,42 +86,56 @@ public class Item : ScriptableObject
         item.amount--;
         //variable for later
         Vector3 saveScale;
-
+        
         if (item.amount <= 0)
         {
             inventory.items.Remove(item);
-
+            
             EquipmentManager.Instance.IsHoldingItem = false;
             // saves original scale
+            equipmentManager.currentEquipment[0] = null;
             saveScale = item.objectRef.transform.localScale;
+            
             //removes the object form the hand. aka unparents it. 
             item.objectRef.transform.parent = null;
             //applies correct scale after unparent 
+            //item.objectRef.transform.localRotation = inventory.throwPosition.rotation;
             item.objectRef.transform.localScale = saveScale;
+            
+            item.objectRef.SetActive(true);
             //
             item.objectRef.transform.position = inventory.throwPosition.position;
             //item becomes vissable (prob not needed but whatever)
-            item.objectRef.SetActive(true);
+            
 
+            
+            
+           
             item.ToggleIsTrigger(false);
-
+            
             //launches item
+            
             if (item.objectRef.GetComponent<Rigidbody>() != null)
             {
+                
                 item.objectRef.transform.rotation = inventory.throwPosition.rotation;
-                item.objectRef.GetComponent<Rigidbody>().AddForce(inventory.throwPosition.forward * PlayerMovement.throwStrengthMult, ForceMode.Impulse);
+                
+                item.objectRef.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+                item.objectRef.GetComponent<Rigidbody>().AddForce(item.objectRef.transform.forward * 10f, ForceMode.Impulse);
+                
             }
             else
             {
                 Debug.LogError("NO RIGIDBODY FOUND");
             }
-
-            equipmentManager.currentEquipment[0] = null;
+            
+            
             inventory.ItemWasChanged();
         }
         // for the stacked items in list 
         else
         {
+            
             // saves original scale
             saveScale = item.itemStack[item.amount - 1].transform.localScale;
             //removes the object form the hand. aka unparents it. 
@@ -138,13 +152,14 @@ public class Item : ScriptableObject
             //launches item
             if (item.itemStack[item.amount - 1].GetComponent<Rigidbody>() != null)
             {
-                item.objectRef.transform.rotation = inventory.throwPosition.rotation;
-                item.itemStack[item.amount - 1].GetComponent<Rigidbody>().AddForce(inventory.throwPosition.forward * PlayerMovement.throwStrengthMult, ForceMode.Impulse);
+                item.itemStack[item.amount - 1].transform.rotation = inventory.throwPosition.rotation;
+                item.itemStack[item.amount - 1].GetComponent<Rigidbody>().AddForce(inventory.throwPosition.forward * 10f, ForceMode.Impulse);
             }
             else
             {
                 Debug.LogError("NO RIGIDBODY FOUND");
             }
+            item.itemStack.RemoveAt(item.amount - 1);
             inventory.ItemWasChanged();
         }
     }

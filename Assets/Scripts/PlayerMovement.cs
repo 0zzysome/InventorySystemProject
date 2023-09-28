@@ -46,11 +46,16 @@ public class PlayerMovement : MonoBehaviour
         ReadInput();
         SpeedControll();
         ChangeDrag();
-        ThrowEquiped();
+        
     }
     private void FixedUpdate()
     {
         movePlayer();
+        
+    }
+    private void LateUpdate()
+    {
+        ThrowEquiped();
     }
     void ReadInput()
     {
