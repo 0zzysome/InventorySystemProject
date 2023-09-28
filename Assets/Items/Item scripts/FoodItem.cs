@@ -11,4 +11,9 @@ public class FoodItem : Item
         EquipItem();
         
     }
+    public override void AlternativeUse()
+    {
+        base.AlternativeUse();
+        ThrowItem(this);
+    }
 }

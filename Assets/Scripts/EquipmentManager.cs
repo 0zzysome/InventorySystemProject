@@ -72,7 +72,7 @@ public class EquipmentManager : MonoBehaviour
         //HELD ITEM STUFF (its a mess)
         //makes shure you can see the held item
         currentEquipment[0].objectRef.SetActive(true);
-        //makes it no longer a trigger so it doesent interact with the player
+        //makes it a trigger so it doesent interact with the player
         currentEquipment[0].ToggleIsTrigger(true);
         //saves scale for after parent 
         Vector3 scaleRef = currentEquipment[0].objectRef.transform.localScale;
@@ -84,66 +84,4 @@ public class EquipmentManager : MonoBehaviour
 
 
     }
-    public void ThrowItem(Item item, Transform transform)
-    {
-        if (item == null) 
-        {
-            Debug.LogError("ERROR: player tried to  throw item but item was not found!");
-            return;
-       
-        }
-        item.amount--;
-        //variable for later
-        Vector3 saveScale; 
-
-        if (item.amount <= 0)
-        {
-            inventory.items.Remove(item);
-            
-            IsHoldingItem = false;
-            // saves original scale
-            saveScale = item.objectRef.transform.localScale;
-            //removes the object form the hand. aka unparents it. 
-            item.objectRef.transform.parent = null;
-            //applies correct scale after unparent 
-            item.objectRef.transform.localScale = saveScale;
-            //
-            item.objectRef.transform.position = inventory.dropPosition.position;
-            //item becomes vissable (prob not needed but whatever)
-            item.objectRef.SetActive(true);
-
-            if(item.objectRef.GetComponent<Rigidbody>()  != null) 
-            {
-                item.objectRef.GetComponent<Rigidbody>().velocity = transform.forward * 100f ;
-            }
-            
-            
-            inventory.ItemWasChanged();
-        }
-        // for the stacked items in list 
-        else
-        {
-            // saves original scale
-            saveScale = item.itemStack[item.amount - 1].transform.localScale;
-            //removes the object form the hand. aka unparents it. 
-            item.itemStack[item.amount - 1].transform.parent = null;
-            //applies correct scale after unparent 
-            item.itemStack[item.amount - 1].transform.localScale = saveScale;
-
-            //sets posiotion to corrtect position.
-            item.itemStack[item.amount - 1].transform.position = inventory.dropPosition.position;
-            // makes item visable
-            item.itemStack[item.amount - 1].SetActive(true);
-            if (item.itemStack[item.amount - 1].GetComponent<Rigidbody>() != null)
-            {
-                item.itemStack[item.amount - 1].GetComponent<Rigidbody>().velocity = handPosition.GetComponentInParent<Transform>().forward * 100f;
-            }
-
-            inventory.ItemWasChanged();
-        }
-    }
-
-
-
-
 }

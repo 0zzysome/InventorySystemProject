@@ -33,7 +33,7 @@ public class Inventory : MonoBehaviour
 
     public int inventorySpace = 20;
     public Transform dropPosition;
-
+    public Transform throwPosition;
     //use funtion to refrence cuase public is messy
     public List<Item> items = new List<Item>(); 
     //handles everyting to doi with picking up and item (oh dear god)
@@ -67,13 +67,7 @@ public class Inventory : MonoBehaviour
                         return true;
                     }
                      
-                    {
-                        //otherwise make a new item in the list
-                        items.Add(itemCopy);
-                        Debug.Log("amount was increased on " + items[i].name);
-                        ItemWasChanged();
-                        return true;
-                    }  
+                    
                     
                 }
                 
@@ -113,15 +107,8 @@ public class Inventory : MonoBehaviour
     //used for equipment as you dont drop the equipment
     public void Remove(Item item)
     {
-        
         items.Remove(item);
-            
-            
-
         ItemWasChanged();
-        
-        
-
     }
 
 
@@ -129,7 +116,6 @@ public class Inventory : MonoBehaviour
     public List<Item> getItems() 
     {
         return items;
-        
     }
     //makes shure funtion is not emty and call out to all funtions lisening to this call
     //uppdates UI

@@ -13,13 +13,10 @@ public class PropItem : Item
         EquipItem();
         
     }
-    public override void Use()
+    public override void AlternativeUse()
     {
-        base.Use();
-        ThrowItem();
+        base.AlternativeUse();
+        ThrowItem(this);
     }
-    public void ThrowItem()
-    {
-        //EquipmentManager.Instance.ThrowItem(this);
-    }
+    
 }

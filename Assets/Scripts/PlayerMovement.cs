@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using System.Xml.Serialization;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -19,23 +15,23 @@ public class PlayerMovement : MonoBehaviour
     public float playerHeight;
     public LayerMask whatIsGround;
     bool isGrounded;
-
-    
-
     public Transform orientation;
     float horizontalInput;
     float verticalInput;
 
-
     [Header("Throwing")]
-    public Transform cameraDirection;
+    
+    public static float throwStrengthMult = 10f;
     public float throwCooldown;
     float nextUppdate = 0f;
+    
+    
     Vector3 direction;
     Rigidbody rb;
-
+    EquipmentManager equipmentManager;
     private void Start()
     {
+        equipmentManager = EquipmentManager.Instance;
         rb = GetComponent<Rigidbody>();   
         rb.freezeRotation = true;
         
@@ -125,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void ThrowEquiped()
     {
-        if (EquipmentManager.Instance.currentEquipment[0] != null)
+        if (equipmentManager.currentEquipment[0] != null)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -136,8 +132,9 @@ public class PlayerMovement : MonoBehaviour
                 {
                     if (Time.time > nextUppdate)
                     {
-                        EquipmentManager.Instance.ThrowItem(EquipmentManager.Instance.currentEquipment[0], cameraDirection);
-                        Debug.Log("throwing  " + EquipmentManager.Instance.currentEquipment[0].name);
+                        Debug.Log("throwing  " + equipmentManager.currentEquipment[0].name);
+                        equipmentManager.currentEquipment[0].AlternativeUse();
+                        
                         nextUppdate = Time.time + throwCooldown;
                     }
 
