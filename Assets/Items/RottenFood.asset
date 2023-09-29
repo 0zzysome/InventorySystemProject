@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db4ee6c29ec457140b0da4b958635565, type: 3}
-  m_Name: potato
+  m_Name: RottenFood
   m_EditorClassIdentifier: 
-  name: Potato
+  name: RottenFood
   icon: {fileID: 0}
   equipSlot: 0
   isDefaultItem: 0
   amount: 1
   stackable: 1
-  maxStack: 3
+  maxStack: 20
   objectRef: {fileID: 0}
   itemStack: []
-  healthRestoration: 10
+  healthRestoration: -10

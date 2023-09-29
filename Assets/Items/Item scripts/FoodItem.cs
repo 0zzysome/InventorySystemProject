@@ -16,4 +16,15 @@ public class FoodItem : Item
         base.AlternativeUse();
         ThrowItem(this);
     }
+    public override void Use()
+    {
+        base.Use();
+        bool washealed = PlayerHealth.Instance.ChangeHealth(healthRestoration);
+        if (washealed) 
+        {
+            RemoveItemFromHand(this);
+        }
+        Debug.Log("item " + this.GetType().Name + " was consumed.");
+    }
+    
 }

@@ -34,6 +34,10 @@ public class Item : ScriptableObject
         Debug.Log("Interacted with " + name + " while in hand");
 
     }
+    public virtual void Use() 
+    {
+        
+    }
     public void SaveObject(GameObject obj ) 
     {
         objectRef = obj;
@@ -161,6 +165,36 @@ public class Item : ScriptableObject
             }
             item.itemStack.RemoveAt(item.amount - 1);
             inventory.ItemWasChanged();
+        }
+    }
+
+    public void RemoveItemFromHand(Item item)
+    {
+        if (item == null)
+        {
+            Debug.LogError("ERROR: player tried to  throw item but item was not found!");
+            return;
+
+        }
+        item.amount--;
+        //variable for later
+        //Vector3 saveScale;
+
+        if (item.amount <= 0)
+        {
+            inventory.items.Remove(item);
+            EquipmentManager.Instance.IsHoldingItem = false;
+            equipmentManager.currentEquipment[0] = null;
+            Destroy(item.objectRef);
+            
+            //inventory.ItemWasChanged();
+        }
+        // for the stacked items in list 
+        else
+        {
+            Destroy(item.itemStack[item.amount - 1]);
+            item.itemStack.RemoveAt(item.amount - 1);
+            //inventory.ItemWasChanged();
         }
     }
 }

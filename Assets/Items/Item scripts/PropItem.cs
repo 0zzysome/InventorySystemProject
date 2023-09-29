@@ -18,5 +18,9 @@ public class PropItem : Item
         base.AlternativeUse();
         ThrowItem(this);
     }
-    
+    public override void Use()
+    {
+        base.Use();
+        Debug.Log("not implemented anything yet");
+    }
 }

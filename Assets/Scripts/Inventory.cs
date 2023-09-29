@@ -11,10 +11,6 @@ public class Inventory : MonoBehaviour
     
     private void Awake()
     {
-        
-        
-            
-        
         //should only be one inventory becuase of static, so if there are more then this error will show
         if (Instance != null) 
         {
@@ -45,7 +41,7 @@ public class Inventory : MonoBehaviour
         {
             if(items.Count >= inventorySpace) 
             {
-                Debug.Log("no room for more items");
+                // Debug.Log("no room for more items");
                 //returns to avoid adding more than space alows
                 return false;
             }
@@ -54,7 +50,7 @@ public class Inventory : MonoBehaviour
                 //ses if the item is already in list and if it can stack
                 if (items[i].name == itemCopy.name && itemCopy.stackable) 
                 {
-                    Debug.Log("was same as in inventory");
+                    //Debug.Log("was same as in inventory");
                     //the amount is less than the max stack 
                     if (items[i].amount < items[i].maxStack)
                     {
@@ -62,7 +58,7 @@ public class Inventory : MonoBehaviour
                         items[i].amount++;
                         //adds refrence of it to the list stack so can be used later
                         items[i].AddObjectToStack(itemCopy.objectRef);
-                        Debug.Log("amount was increased on " + items[i].name);
+                        // Debug.Log("amount was increased on " + items[i].name);
                         ItemWasChanged();
                         return true;
                     }
@@ -72,7 +68,7 @@ public class Inventory : MonoBehaviour
                 }
                 
             }
-            Debug.Log("not found in inventory");
+            //Debug.Log("not found in inventory");
             items.Add(itemCopy);
             
             ItemWasChanged();
@@ -127,7 +123,7 @@ public class Inventory : MonoBehaviour
         }
         else 
         {
-            Debug.Log("FUNCTION FOR UPDATEUI WAS NULL!!!!!");
+            Debug.LogError("FUNCTION FOR UPDATEUI WAS NULL!!!!!");
         }
     }
 }

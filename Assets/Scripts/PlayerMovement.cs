@@ -56,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
     private void LateUpdate()
     {
         ThrowEquiped();
+        UseEquiped();
     }
     void ReadInput()
     {
@@ -126,24 +127,35 @@ public class PlayerMovement : MonoBehaviour
     }
     public void ThrowEquiped()
     {
+        //makes shure hand is not emty
         if (equipmentManager.currentEquipment[0] != null)
         {
-            if (Input.GetMouseButtonDown(0))
+
+            if (Input.GetMouseButtonDown(1))
             {
-                // makes shure hand is not emty
-
-
+               //makes shure you are not in inventory/other menu
                 if (Cursor.visible == false)
                 {
                     if (Time.time > nextUppdate)
                     {
-                        Debug.Log("throwing  " + equipmentManager.currentEquipment[0].name);
+                        //Debug.Log("throwing  " + equipmentManager.currentEquipment[0].name);
                         equipmentManager.currentEquipment[0].AlternativeUse();
                         
                         nextUppdate = Time.time + throwCooldown;
                     }
 
                 }
+            }
+        }
+    }
+
+    public void UseEquiped()
+    {
+        if (equipmentManager.currentEquipment[0] != null)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                equipmentManager.currentEquipment[0].Use();
             }
         }
     }
