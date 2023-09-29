@@ -33,9 +33,8 @@ public class PlayerHealth : MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(currentHealth);
     }
-    public bool ChangeHealth(int changeAmount) 
+    public bool ConsumableChangeHealth(int changeAmount) 
     {
-        
         int oldHealth = currentHealth;
         currentHealth += changeAmount;
         //ses if you are at max health
@@ -47,7 +46,6 @@ public class PlayerHealth : MonoBehaviour
             healthBar.SetHealth(currentHealth); 
             
         }
-       
         //kills player
         if (currentHealth <= 0 ) 
         {
@@ -65,15 +63,5 @@ public class PlayerHealth : MonoBehaviour
         {
             return true;
         }
-        
-        
-        
-        
-        
-
-        
-
-        
-        
     }
 }

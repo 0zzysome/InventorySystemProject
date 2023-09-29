@@ -23,4 +23,5 @@ public class PropItem : Item
         base.Use();
         Debug.Log("not implemented anything yet");
     }
+    
 }

@@ -90,7 +90,7 @@ public class Item : ScriptableObject
         item.amount--;
         //variable for later
         Vector3 saveScale;
-        
+        // for the held item
         if (item.amount <= 0)
         {
             inventory.items.Remove(item);
@@ -136,7 +136,7 @@ public class Item : ScriptableObject
             
             inventory.ItemWasChanged();
         }
-        // for the stacked items in list 
+        // for the stacked items in held item list 
         else
         {
             

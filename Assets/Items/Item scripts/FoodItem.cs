@@ -19,8 +19,8 @@ public class FoodItem : Item
     public override void Use()
     {
         base.Use();
-        bool washealed = PlayerHealth.Instance.ChangeHealth(healthRestoration);
-        if (washealed) 
+        bool wasConsumed = PlayerHealth.Instance.ConsumableChangeHealth(healthRestoration);
+        if (wasConsumed) 
         {
             RemoveItemFromHand(this);
         }
