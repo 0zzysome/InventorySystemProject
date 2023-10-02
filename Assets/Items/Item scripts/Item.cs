@@ -95,7 +95,7 @@ public class Item : ScriptableObject
         {
             inventory.items.Remove(item);
             
-            EquipmentManager.Instance.IsHoldingItem = false;
+            equipmentManager.IsHoldingItem = false;
             // saves original scale
             equipmentManager.currentEquipment[0] = null;
             saveScale = item.objectRef.transform.localScale;
@@ -124,9 +124,14 @@ public class Item : ScriptableObject
                 
                 item.objectRef.transform.rotation = inventory.throwPosition.rotation;
                 
+                item.objectRef.transform.position = inventory.throwPosition.position;
+                //fixes items getting thrown the wrong way.
                 item.objectRef.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-                item.objectRef.GetComponent<Rigidbody>().AddForce(item.objectRef.transform.forward * 10f, ForceMode.Impulse);
-                
+                //adforce removed becuase whanted to have same velocity for all items
+                //item.objectRef.GetComponent<Rigidbody>().AddForce(item.objectRef.transform.forward * 10f, ForceMode.Impulse);
+
+                item.objectRef.GetComponent<Rigidbody>().velocity = item.objectRef.transform.forward * 15;
+                item.objectRef.transform.Rotate(0, 90, 0);
             }
             else
             {
@@ -157,7 +162,9 @@ public class Item : ScriptableObject
             if (item.itemStack[item.amount - 1].GetComponent<Rigidbody>() != null)
             {
                 item.itemStack[item.amount - 1].transform.rotation = inventory.throwPosition.rotation;
-                item.itemStack[item.amount - 1].GetComponent<Rigidbody>().AddForce(inventory.throwPosition.forward * 10f, ForceMode.Impulse);
+                //adforce removed becuase whanted to have same velocety for all items
+                //item.itemStack[item.amount - 1].GetComponent<Rigidbody>().AddForce(inventory.throwPosition.forward * 10f, ForceMode.Impulse);
+                item.itemStack[item.amount - 1].GetComponent<Rigidbody>().velocity = inventory.throwPosition.forward * 15;
             }
             else
             {

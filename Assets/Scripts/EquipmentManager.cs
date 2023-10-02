@@ -21,6 +21,7 @@ public class EquipmentManager : MonoBehaviour
     public Transform handPosition;
     private void Update()
     {
+        /*
         if (IsHoldingItem) 
         {
             if (currentEquipment[0] != null) 
@@ -31,6 +32,7 @@ public class EquipmentManager : MonoBehaviour
             }
             
         }
+        */
     }
     
 

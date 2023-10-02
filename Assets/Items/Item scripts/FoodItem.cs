@@ -23,8 +23,9 @@ public class FoodItem : Item
         if (wasConsumed) 
         {
             RemoveItemFromHand(this);
+            Debug.Log("item " + this.GetType().Name + " was consumed.");
         }
-        Debug.Log("item " + this.GetType().Name + " was consumed.");
+        
     }
     
 }

@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -40,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         //checks if player is grounded
         isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
         
@@ -47,6 +49,8 @@ public class PlayerMovement : MonoBehaviour
         SpeedControll();
         ChangeDrag();
         
+        UseEquiped();
+        StayOnHand();
     }
     private void FixedUpdate()
     {
@@ -55,8 +59,8 @@ public class PlayerMovement : MonoBehaviour
     }
     private void LateUpdate()
     {
-        ThrowEquiped();
-        UseEquiped();
+        
+        AltUse();
     }
     void ReadInput()
     {
@@ -125,7 +129,7 @@ public class PlayerMovement : MonoBehaviour
     {
         readyToJump = true;
     }
-    public void ThrowEquiped()
+    public void AltUse()
     {
         //makes shure hand is not emty
         if (equipmentManager.currentEquipment[0] != null)
@@ -157,6 +161,23 @@ public class PlayerMovement : MonoBehaviour
             {
                 equipmentManager.currentEquipment[0].Use();
             }
+        }
+    }
+    public void StayOnHand()
+    {
+        
+        if (equipmentManager.IsHoldingItem)
+        {
+            if (equipmentManager.currentEquipment[0] != null)
+            {
+                
+                    equipmentManager.currentEquipment[0].objectRef.transform.position = equipmentManager.handPosition.position;
+
+                    equipmentManager.currentEquipment[0].objectRef.transform.rotation = equipmentManager.handPosition.rotation;
+                
+                
+            }
+
         }
     }
 }
