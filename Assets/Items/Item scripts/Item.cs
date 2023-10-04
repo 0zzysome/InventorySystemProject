@@ -130,7 +130,7 @@ public class Item : ScriptableObject
                 //adforce removed becuase whanted to have same velocity for all items
                 //item.objectRef.GetComponent<Rigidbody>().AddForce(item.objectRef.transform.forward * 10f, ForceMode.Impulse);
 
-                item.objectRef.GetComponent<Rigidbody>().velocity = item.objectRef.transform.forward * 15;
+                item.objectRef.GetComponent<Rigidbody>().velocity = item.objectRef.transform.forward * equipmentManager.throwStrengthMult;
                 item.objectRef.transform.Rotate(0, 90, 0);
             }
             else
@@ -164,7 +164,7 @@ public class Item : ScriptableObject
                 item.itemStack[item.amount - 1].transform.rotation = inventory.throwPosition.rotation;
                 //adforce removed becuase whanted to have same velocety for all items
                 //item.itemStack[item.amount - 1].GetComponent<Rigidbody>().AddForce(inventory.throwPosition.forward * 10f, ForceMode.Impulse);
-                item.itemStack[item.amount - 1].GetComponent<Rigidbody>().velocity = inventory.throwPosition.forward * 15;
+                item.itemStack[item.amount - 1].GetComponent<Rigidbody>().velocity = inventory.throwPosition.forward * equipmentManager.throwStrengthMult;
             }
             else
             {

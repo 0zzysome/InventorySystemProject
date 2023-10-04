@@ -15,25 +15,12 @@ public class EquipmentManager : MonoBehaviour
         Instance = this;
 
     }
-
+    public float throwStrengthMult = 10f;
     public Item[] currentEquipment;
     public bool IsHoldingItem;
     public Transform handPosition;
-    private void Update()
-    {
-        /*
-        if (IsHoldingItem) 
-        {
-            if (currentEquipment[0] != null) 
-            {
-                currentEquipment[0].objectRef.transform.position = handPosition.position;
-
-                currentEquipment[0].objectRef.transform.rotation = handPosition.rotation;
-            }
-            
-        }
-        */
-    }
+    
+    
     
 
 

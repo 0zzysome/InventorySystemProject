@@ -20,10 +20,10 @@ public class PlayerMovement : MonoBehaviour
     float horizontalInput;
     float verticalInput;
 
-    [Header("Throwing")]
     
-    public static float throwStrengthMult = 10f;
-    public float throwCooldown;
+    
+    
+    public float altUseCooldown;
     float nextUppdate = 0f;
     
     
@@ -145,7 +145,7 @@ public class PlayerMovement : MonoBehaviour
                         //Debug.Log("throwing  " + equipmentManager.currentEquipment[0].name);
                         equipmentManager.currentEquipment[0].AlternativeUse();
                         
-                        nextUppdate = Time.time + throwCooldown;
+                        nextUppdate = Time.time + altUseCooldown;
                     }
 
                 }
