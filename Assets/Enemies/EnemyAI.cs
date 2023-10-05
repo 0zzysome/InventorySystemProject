@@ -9,7 +9,7 @@ public class EnemyAI : MonoBehaviour
 
     public Transform player;
 
-
+    public Rigidbody rigidbodyRef;
 
     public LayerMask whatIsGround;
     public LayerMask whatIsPlayer;
@@ -42,10 +42,10 @@ public class EnemyAI : MonoBehaviour
     {
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-
+        
         if(!playerInSightRange && !playerInAttackRange) 
         {
-            Patroling();
+            RandomlyPatroling();
         }
         if (playerInSightRange && !playerInAttackRange)
         {
@@ -56,7 +56,7 @@ public class EnemyAI : MonoBehaviour
             AttackPlayer();
         }
     }
-    private void Patroling() 
+    private void RandomlyPatroling() 
     {
         //creates new point if one does not exsist
         if (!walkPointSet) 
@@ -97,8 +97,10 @@ public class EnemyAI : MonoBehaviour
     }
     private void AttackPlayer()
     {
+        
         agent.SetDestination(transform.position);
         transform.LookAt(player);
+        
 
         if (!alreadyAttacked) 
         {
