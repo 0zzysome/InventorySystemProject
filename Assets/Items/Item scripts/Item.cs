@@ -59,9 +59,10 @@ public class Item : ScriptableObject
 
     public void ToggleIsTrigger(bool Toggle)
     {
-        if (objectRef.GetComponent<MeshCollider>() != null)
+        if (objectRef.GetComponent<Collider>() != null)
         {
-            objectRef.GetComponent<MeshCollider>().isTrigger = Toggle; 
+            objectRef.GetComponent<Collider>().isTrigger = Toggle;
+            
         }
         else
         {
