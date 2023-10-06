@@ -9,7 +9,7 @@ public class EnemyAI : MonoBehaviour
 
     public Transform player;
 
-    public Rigidbody rigidbodyRef;
+    
 
     public LayerMask whatIsGround;
     public LayerMask whatIsPlayer;
@@ -22,7 +22,7 @@ public class EnemyAI : MonoBehaviour
     //attack
     public float timeBetweenAttacks;
     bool alreadyAttacked;
-    public GameObject projectile;
+    
 
     //states 
     public float sightRange, attackRange;
