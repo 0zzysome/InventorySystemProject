@@ -10,7 +10,7 @@ public class InventorySlot : MonoBehaviour
 {
     public Button removeButton;
     public TMP_Text amountText;
-    
+    public TMP_Text worthText;
     public Image icon;
     Item item;
     public void AddItem(Item newitem) 
@@ -21,6 +21,9 @@ public class InventorySlot : MonoBehaviour
         removeButton.interactable = true;
         amountText.enabled = true;
         amountText.text = item.amount.ToString();
+        worthText.enabled = true;
+        item.UppdateWorth();
+        worthText.text =item.totalWorth.ToString();
         Debug.Log(item.amount +" number of items with the name "+ item.name);
     }
     public void ClearSlot() 
@@ -30,6 +33,7 @@ public class InventorySlot : MonoBehaviour
         icon.enabled = false;
         removeButton.interactable = false;
         amountText.enabled = false;
+        worthText.enabled = false;
     }
     public void OnRemoveButton()
     {

@@ -17,6 +17,8 @@ public class Item : ScriptableObject
     public int maxStack = 20;
     public GameObject objectRef;
     public List<GameObject> itemStack;
+    public float worth;
+    public float totalWorth;
     Inventory inventory;
     EquipmentManager equipmentManager;
     private void Awake()
@@ -204,6 +206,12 @@ public class Item : ScriptableObject
             item.itemStack.RemoveAt(item.amount - 1);
             //inventory.ItemWasChanged();
         }
+    }
+
+
+    public void UppdateWorth() 
+    {
+        totalWorth = worth * amount;
     }
 }
 public enum EquipSlot { Weapon, Chest, Head }

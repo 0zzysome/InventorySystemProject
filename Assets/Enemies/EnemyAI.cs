@@ -9,8 +9,7 @@ public class EnemyAI : MonoBehaviour
 
     public Transform player;
 
-    
-
+   
     public LayerMask whatIsGround;
     public LayerMask whatIsPlayer;
 
@@ -19,6 +18,7 @@ public class EnemyAI : MonoBehaviour
     bool walkPointSet;
     public float walkPointRange;
 
+    float searchNewCooldown; //for if the enemy has walked 
     //attack
     public float timeBetweenAttacks;
     bool alreadyAttacked;
@@ -70,7 +70,7 @@ public class EnemyAI : MonoBehaviour
         //checks distance from enemy to walkpoint. 
         Vector3 distanceToWalkPoint = transform.position-walkPoint;
         //if its close enouth it has reached the walk point and shuld make a new one. 
-        if (distanceToWalkPoint.magnitude < 1f) 
+        if (distanceToWalkPoint.magnitude < 1.4f) 
         {
             walkPointSet = false;
         }
@@ -89,6 +89,7 @@ public class EnemyAI : MonoBehaviour
         if(Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround)) 
         {
             walkPointSet = true;
+
         }
     }
     private void ChasePlayer()

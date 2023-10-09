@@ -21,3 +21,5 @@ MonoBehaviour:
   maxStack: 1
   objectRef: {fileID: 0}
   itemStack: []
+  worth: 100
+  totalWorth: 0
