@@ -33,7 +33,7 @@ public class Inventory : MonoBehaviour
     //use funtion to refrence cuase public is messy
     public List<Item> items = new List<Item>(); 
     //handles everyting to doi with picking up and item (oh dear god)
-    public bool add(Item item)
+    public bool Add(Item item)
     {
 
         Item itemCopy = Instantiate(item);// creates a copy so code never changes actual scriptableobject
@@ -97,7 +97,22 @@ public class Inventory : MonoBehaviour
         }
         
     }
-
+    public void DroppRandomItem() 
+    {
+        if(items.Count != 0) 
+        {
+            int rand = Random.Range(0, items.Count);
+            if(items[rand] != null) 
+            {
+                Drop(items[rand]);
+                Debug.Log("Dropped item in position " + rand);
+            }
+            else 
+            {
+                Debug.LogError("RANDOM ITEM TO DROP WAS NOT FOUND");
+            }
+        } 
+    }
     
     // removes the item from inventory
     //used for equipment as you dont drop the equipment
@@ -109,7 +124,7 @@ public class Inventory : MonoBehaviour
 
 
     //made to avoid lists being public problem.
-    public List<Item> getItems() 
+    public List<Item> GetItems() 
     {
         return items;
     }

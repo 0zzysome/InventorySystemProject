@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,16 +32,11 @@ public class RagdollEnemy : MonoBehaviour
                 agent.isStopped = true;
                 enemyRagdoll.SetActive(true);
                 enemyRagdoll.transform.parent = null;
+                // gives it a small push
+                float randomPushForce = Random.Range(-0.5f, 0.5f); 
+                enemyRagdoll.GetComponent<Rigidbody>().AddForce(enemyRagdoll.transform.right * randomPushForce, ForceMode.Impulse); 
                 enemy.SetActive(false);
                 ragdollTime = other.GetComponent<Rigidbody>().mass;
-                /*
-                if (other.GetComponent<Rigidbody>() != null) 
-                {
-                    
-                    Debug.Log("BOOM");
-                    other.GetComponent<Rigidbody>().AddExplosionForce(6f, transform.position, 3f, 0.5f, ForceMode.Impulse);
-                }
-                */
                 cooldownEndsTime = Time.time + cooldownRagdoll;
                 Invoke(nameof(GetEnemyBack), ragdollTime);
                 ragdollTime = minRagdollTime;
@@ -59,16 +55,10 @@ public class RagdollEnemy : MonoBehaviour
                 agent.isStopped = true;
                 enemyRagdoll.SetActive(true);
                 enemyRagdoll.transform.parent = null;
+                float randomPushForce = Random.Range(-0.5f, 0.5f);
+                enemyRagdoll.GetComponent<Rigidbody>().AddForce(enemyRagdoll.transform.right * randomPushForce, ForceMode.Impulse);
                 enemy.SetActive(false);
                 ragdollTime = other.GetComponent<Rigidbody>().mass;
-                /*
-                if (other.GetComponent<Rigidbody>() != null) 
-                {
-                    
-                    Debug.Log("BOOM");
-                    other.GetComponent<Rigidbody>().AddExplosionForce(6f, transform.position, 3f, 0.5f, ForceMode.Impulse);
-                }
-                */
                 cooldownEndsTime = Time.time + cooldownRagdoll;
                 Invoke(nameof(GetEnemyBack), ragdollTime);
                 ragdollTime = minRagdollTime;
@@ -82,7 +72,7 @@ public class RagdollEnemy : MonoBehaviour
         
         //makes enemy apear again
         enemy.SetActive(true);
-        // saver new position to variable becuase you cant change each position induvidual
+        // save new position to variable becuase you cant change each one induvidualy
         temp.x = enemyRagdoll.transform.position.x;
         temp.y = enemyRagdoll.transform.position.y + 10f;
         temp.z = enemyRagdoll.transform.position.z;

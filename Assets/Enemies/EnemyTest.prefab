@@ -166,6 +166,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3841223937139664832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8550066999675601855}
+  m_Layer: 0
+  m_Name: FirePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8550066999675601855
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3841223937139664832}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.509, z: 1.14}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3345011279626409943}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8069427530774444253
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,6 +232,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8550066999675601855}
   - {fileID: 1070009401308618864}
   - {fileID: 9204385883412741833}
   m_Father: {fileID: 0}
@@ -218,7 +250,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 6704941179203217443}
-  player: {fileID: 0}
+  firePos: {fileID: 8550066999675601855}
+  projectile: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
@@ -241,7 +274,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 8069427530774444253}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.66
   m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -269,7 +302,7 @@ MonoBehaviour:
   agent: {fileID: 6704941179203217443}
   enemy: {fileID: 8069427530774444253}
   enemyRagdoll: {fileID: 8140133988880290311}
-  cooldownRagdoll: 0.5
+  cooldownRagdoll: 0
   minRagdollTime: 1
 --- !u!33 &4583374344277640440
 MeshFilter:

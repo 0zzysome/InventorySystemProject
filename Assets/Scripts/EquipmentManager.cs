@@ -58,7 +58,7 @@ public class EquipmentManager : MonoBehaviour
             //applies correct scale after unparent 
             olditem.objectRef.transform.localScale = saveScale;
             // adds it to inventory
-            inventory.add(olditem);
+            inventory.Add(olditem);
             // sets it to stackable again after adding to inventory.
             olditem.stackable = true;
         }

@@ -14,7 +14,7 @@ public class ItemPickup : Interactable
     {
         Debug.Log("Picking up "+ item.name );
         item.SaveObject(gameObject);
-        bool wasPickedUp = Inventory.Instance.add( item );
+        bool wasPickedUp = Inventory.Instance.Add( item );
         if (wasPickedUp) 
         { 
 

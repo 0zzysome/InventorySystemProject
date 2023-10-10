@@ -7,8 +7,9 @@ public class EnemyAI : MonoBehaviour
 {
     public NavMeshAgent agent;
 
-    public Transform player;
-
+    Transform player;
+    public Transform firePos;
+    public GameObject projectile;
    
     public LayerMask whatIsGround;
     public LayerMask whatIsPlayer;
@@ -65,7 +66,12 @@ public class EnemyAI : MonoBehaviour
         }
         if (walkPointSet) 
         {
-            agent.SetDestination(walkPoint);    
+            agent.SetDestination(walkPoint);
+            //makes shure a new point is given after a little time 
+            if (searchNewCooldown < Time.time) 
+            { 
+                walkPointSet = false;
+            }
         }
         //checks distance from enemy to walkpoint. 
         Vector3 distanceToWalkPoint = transform.position-walkPoint;
@@ -89,7 +95,8 @@ public class EnemyAI : MonoBehaviour
         if(Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround)) 
         {
             walkPointSet = true;
-
+            //resets timer 
+            searchNewCooldown = Time.time + 5f;
         }
     }
     private void ChasePlayer()
@@ -106,10 +113,10 @@ public class EnemyAI : MonoBehaviour
         if (!alreadyAttacked) 
         {
             //attack code 
-            /*
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            */
+            
+            GameObject projectileRef = Instantiate(projectile, transform.position, Quaternion.identity);
+            projectileRef.GetComponent<Rigidbody>().AddForce(transform.forward * 32f, ForceMode.Impulse);
+            
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
