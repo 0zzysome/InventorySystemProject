@@ -19,7 +19,7 @@ MonoBehaviour:
   amount: 1
   stackable: 0
   maxStack: 1
-  objectRef: {fileID: 0}
+  objectRef: {fileID: 8798998898508512995, guid: 7e8d71b1dd4c55d4b80e45bd8558a2ff, type: 3}
   itemStack: []
   worth: 100
   totalWorth: 0

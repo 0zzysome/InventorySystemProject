@@ -17,7 +17,9 @@ MonoBehaviour:
   equipSlot: 0
   isDefaultItem: 0
   amount: 1
-  stackable: 0
-  maxStack: 1
+  stackable: 1
+  maxStack: 2
   objectRef: {fileID: 0}
   itemStack: []
+  worth: 2
+  totalWorth: 0
