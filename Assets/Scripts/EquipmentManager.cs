@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
-using static UnityEditor.Progress;
-using static UnityEditor.Timeline.Actions.MenuPriority;
+
+
 
 public class EquipmentManager : MonoBehaviour
 {
