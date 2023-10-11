@@ -75,7 +75,7 @@ public class EquipmentManager : MonoBehaviour
         currentEquipment[0].objectRef.transform.position = handPosition.position;
         currentEquipment[0].objectRef.transform.parent = handPosition;
         currentEquipment[0].objectRef.transform.localScale = scaleRef;
-       
+        inventory.ItemWasChanged();
         // now updates the position of the item again
         IsHoldingItem = true;
 

@@ -22,9 +22,9 @@ public class InventorySlot : MonoBehaviour
         amountText.enabled = true;
         amountText.text = item.amount.ToString();
         worthText.enabled = true;
-        item.UppdateWorth();
+        
         worthText.text =item.totalWorth.ToString();
-        Debug.Log(item.amount +" number of items with the name "+ item.name);
+        //Debug.Log(item.amount +" number of items with the name "+ item.name);
     }
     public void ClearSlot() 
     {

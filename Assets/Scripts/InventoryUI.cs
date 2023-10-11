@@ -34,10 +34,10 @@ public class InventoryUI : MonoBehaviour
             if (i < inventory.GetItems().Count) 
             {
 
-                
 
+                
                 slots[i].AddItem(inventory.GetItems()[i]);
-                Debug.Log("ITEM ADDED TO INVENTORY");
+                
             }
             //otherwise make the UI slot emty
             else 

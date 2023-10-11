@@ -37,6 +37,7 @@ public class Inventory : MonoBehaviour
     {
 
         Item itemCopy = Instantiate(item);// creates a copy so code never changes actual scriptableobject
+        
         if(!itemCopy.isDefaultItem)
         {
             if(items.Count >= inventorySpace) 
@@ -59,6 +60,7 @@ public class Inventory : MonoBehaviour
                         //adds refrence of it to the list stack so can be used later
                         items[i].AddObjectToStack(itemCopy.objectRef);
                         // Debug.Log("amount was increased on " + items[i].name);
+                        items[i].UppdateWorth();
                         ItemWasChanged();
                         return true;
                     }
@@ -70,7 +72,7 @@ public class Inventory : MonoBehaviour
             }
             //Debug.Log("not found in inventory");
             items.Add(itemCopy);
-            
+            itemCopy.UppdateWorth();
             ItemWasChanged();
         }
         return true;
@@ -84,7 +86,7 @@ public class Inventory : MonoBehaviour
             items.Remove(item);
             item.objectRef.transform.position = dropPosition.position;
             item.objectRef.SetActive(true);
-            
+
             ItemWasChanged();
         }
         else
@@ -93,6 +95,7 @@ public class Inventory : MonoBehaviour
             item.itemStack[item.amount - 1].transform.position = dropPosition.position;
             item.itemStack[item.amount-1].SetActive(true); 
             item.itemStack.RemoveAt(item.amount - 1);
+            item.UppdateWorth();
             ItemWasChanged();
         }
         
@@ -105,7 +108,7 @@ public class Inventory : MonoBehaviour
             if(items[rand] != null) 
             {
                 Drop(items[rand]);
-                Debug.Log("Dropped item in position " + rand);
+                //Debug.Log("Dropped item in position " + rand);
             }
             else 
             {
