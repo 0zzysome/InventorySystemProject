@@ -128,8 +128,12 @@ public class Item : ScriptableObject
                 item.objectRef.transform.rotation = inventory.throwPosition.rotation;
                 
                 item.objectRef.transform.position = inventory.throwPosition.position;
+
+
                 //fixes items getting thrown the wrong way.
                 item.objectRef.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+
+
                 //adforce removed becuase whanted to have same velocity for all items
                 //item.objectRef.GetComponent<Rigidbody>().AddForce(item.objectRef.transform.forward * 10f, ForceMode.Impulse);
 

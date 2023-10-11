@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyProjectile : MonoBehaviour
 {
-    public float timeInScene;
+    
+    public float timeInScene = 4;
     float timeWhenDestroyed;
     bool hasDroppedItem = false;
     private void OnTriggerEnter(Collider other)
@@ -40,6 +41,7 @@ public class EnemyProjectile : MonoBehaviour
         //destroys projectile when timer is up.
         if(timeWhenDestroyed < Time.time) 
         {
+            // make it destry enemy and not script.
             Destroy(this);
         }
     }
