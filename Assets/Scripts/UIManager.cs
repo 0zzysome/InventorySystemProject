@@ -71,9 +71,10 @@ public class UIManager : MonoBehaviour
             total += inventory.items[i].totalWorth;
             //Debug.Log("added " + inventory.items[i].totalWorth + " to total");
         }
-        //if there is an item in the inventory
+        //if there is an item equiped
         if(EquipmentManager.Instance.currentEquipment[0] != null) 
         {
+            //add it to the total
             EquipmentManager.Instance.currentEquipment[0].UppdateWorth();
             total += EquipmentManager.Instance.currentEquipment[0].totalWorth;
         }
